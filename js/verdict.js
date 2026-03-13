@@ -17,8 +17,8 @@ function generateVerdict(state) {
   if (timeDiff > 0) {
     score += timeDiff * 0.8;
   } else {
-    // Transit is faster or equal — strong transit lean
-    score -= 20;
+    // Transit is faster or equal — mild transit lean
+    score -= 10;
   }
 
   // Cost penalty: each dollar extra for rideshare pulls away from it
@@ -39,7 +39,7 @@ function generateVerdict(state) {
   score += upsideWeight[state.upside] || 0;
 
   // --- Dread tax ---
-  const dreadWeight = { fine: -5, "rather-not": 10, "absolutely-not": 30 };
+  const dreadWeight = { fine: -5, "rather-not": 15, "absolutely-not": 40 };
   score += dreadWeight[state.dread] || 0;
 
   // --- Regret test ---
@@ -47,7 +47,7 @@ function generateVerdict(state) {
   const regretWeight = {
     "use-it": 10,
     decompress: 5,
-    phone: -20,
+    phone: -10,
     "no-idea": -8,
   };
   score += (regretWeight[state.regret] || 0) * boost("opportunity");
