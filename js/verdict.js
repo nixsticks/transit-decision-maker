@@ -128,7 +128,7 @@ function buildTransitCase(score, state, dollars, minutes) {
     if (minutes <= 15) {
       parts.push(`You're only saving ${minutes} minutes with the rideshare — barely enough to notice once you get there.`);
     } else {
-      parts.push(`Yes, it's ${minutes} extra minutes. But that time isn't worth as much as your gut is telling you right now.`);
+      parts.push(`Yes, it's ${minutes} extra minutes. If you're really not feeling it, take the car anyway, but try giving it a chance.`);
     }
   } else {
     parts.push("Transit is actually faster here, so you'd just be paying more to go slower.");
@@ -136,7 +136,7 @@ function buildTransitCase(score, state, dollars, minutes) {
 
   // Softening if there's upside
   if (state.upside === "maybe") {
-    parts.push("The trip might actually be kind of nice. Give it a chance.");
+    parts.push("You said the trip might actually be kind of nice. Give it a chance.");
   }
 
   if (state.dread === "fine") {
